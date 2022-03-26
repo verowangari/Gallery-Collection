@@ -39,3 +39,12 @@ def past_days_photos(request, past_date):
         return redirect(photos_of_day)
 
     return render(request, 'all-photos/past-photos.html', {"date": date})
+
+def gallery(request):
+    return render(request,'all-photos/gallery.html')
+
+def viewPhoto(request,pk):
+    return render(request,'all-photos/photo.html')
+
+def addPhoto(request):
+    return render(request,'all-photos/add.html')
