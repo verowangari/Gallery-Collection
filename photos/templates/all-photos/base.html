@@ -6,20 +6,21 @@
   <meta charset="utf-8">
 
   {% if title %}
-  <title>Gallery Collection - {{title}}</title>
+  <title>Moringa Tribune - {{title}}</title>
   {% else %}
-    <title> Gallery Collection </title>
+    <title> Moringa Tribune </title>
   {% endif %}
 
   {% block styles %}
     {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/basephotos.css' %}">
   {% endblock %}
+
 </head>
 <body>
     {% include "navbar.html" %}
-    {% block content %} <h1 class='text-center'>Photos for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+
+    {% block content %} <h1 class='text-center'>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
 
     {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
