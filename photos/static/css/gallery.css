@@ -1,3 +1,4 @@
 .image-thumbail{
     height: 200px;
+    object-fit:cover ;
 }

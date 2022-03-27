@@ -43,7 +43,7 @@ def past_days_photos(request, past_date):
 def gallery(request):
     return render(request,'all-photos/gallery.html')
 
-def viewPhoto(request,pk):
+def viewPhoto(request):
     return render(request,'all-photos/photo.html')
 
 def addPhoto(request):
