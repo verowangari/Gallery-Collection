@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
@@ -51,13 +52,58 @@ def viewPhoto(request,pk):
     photo=Photo.objects.get(id=pk)
     return render(request,'all-photos/photo.html',{'photo':photo})
 
-def addPhoto(request):
-    categories=Category.objects.all()
+# def addPhoto(request):
+#     categories=Category.objects.all()
     
-    if request.method== 'POST':
-        data=request.POST
-        image=request.FILES.get('image')
-        print('data:', data)
-        print('image:', image)
+#     if request.method== 'POST':
+#         data=request.POST
+#         image=request.FILES.get('image')
+        
+#         if data['category'] !='none':
+#             category=Category.objects.get(id=data['category'])
+#         elif data['category_new'] !='':
+#             category,created=Category.objects.get_or_create(name=data['category_new'])
+            
+#         else:
+#             category=None
+#             photo=Photo.objects.create(
+                
+#                 category=category,
+#                 description=data['description'],
+#                 image=image,
+#             )
+            
+#             return redirect('gallery')
+#     context = {'categories': categories}
+#     return render(request,'all-photos/add.html',context)
+
+def addPhoto(request):
+    # user = request.user
+
+    # categories = user.category_set.all()
+    categories=Category.objects.all()
+
+    if request.method == 'POST':
+        data = request.POST
+        images = request.FILES.getlist('images')
+
+        if data['category'] != 'none':
+            category = Category.objects.get(id=data['category'])
+        elif data['category_new'] != '':
+            category, created = Category.objects.get_or_create(
+                # user=user,
+                name=data['category_new'])
+        else:
+            category = None
+
+        for image in images:
+            photo = Photo.objects.create(
+                category=category,
+                description=data['description'],
+                image=image,
+            )
+
+        return redirect('gallery')
+
     context = {'categories': categories}
-    return render(request,'all-photos/add.html',context)
+    return render(request, 'all-photos/add.html', context)
