@@ -1,0 +1,43 @@
+
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+
+    </head>
+<body class="m-5">
+    <div class="container">
+<div class="row">
+    <div class="col-md-3">
+<div class="card" > 
+<div class="card-header"> Categories</div>
+<ul class="list-group list-group-flush">
+<li class="list-group-item">All</li>
+<li class="list-group-item"> Cras Justo Odio</li>
+<li class="list-group-item"> Cras Justo Odio</li>
+<li class="list-group-item"> Cras Justo Odio</li>
+</ul>
+</div>
+
+    </div>
+    <div class="col-md-9"><div class="row">
+        <div class="card" >
+            <img src="https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg" class="image-thumbail" alt="...">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div></div>
+</div>
+
+
+    </div>
+</body>
+</html>
