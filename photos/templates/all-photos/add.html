@@ -18,7 +18,7 @@
 
 
         <form method="POST" action="" enctype="multipart/form-data" >
-
+{% csrf_token%}
             <div class="form-group m-3 ">
                 <label>Description</label>
                 <input name="description" placeholder="Enter a description" class="form-control" > 
@@ -41,7 +41,7 @@
 
             <div class="form-group m-3 ">
               <label>Upload Image</label>
-              <input name="image" type="file" class="form-control-file" >
+              <input required name="image" type="file" class="form-control-file" >
             </div>
 <button type="submit" class="btn btn-primary m-5 " >Submit</button>
           </form> 
