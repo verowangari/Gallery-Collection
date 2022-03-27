@@ -14,8 +14,8 @@
 <div class="col">
     <a href="{% url 'gallery' %}" class="btn btn-dark my-3">Back</a>
 <div style="height: 90vh;">
-<img style="max-width:100% ; max-height:100%;" src="https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg" alt="">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porttitor quam nec nunc vulputate blandit. Vestibulum elementum</p>
+<img style="max-width:100% ; max-height:100%;" src="{{photo.image.url}}" alt="">
+<p>{{ photo.description}}</p>
 </div>
 
 </div>
