@@ -49,7 +49,7 @@ def gallery(request):
 
 def viewPhoto(request,pk):
     photo=Photo.objects.get(id=pk)
-    return render(request,'all-photos/photo.html',{})
+    return render(request,'all-photos/photo.html',{'photo':photo})
 
 def addPhoto(request):
     return render(request,'all-photos/add.html')
