@@ -29,56 +29,20 @@
 
     </div>
     <div class="col-md-9"><div class="row">
+        {% for photo in photos %}
+        
         <div class="col-md-4">
             <div class="card my-2 " >
-                <img src="https://media.istockphoto.com/photos/cat-world-picture-id1311993425?b=1&k=20&m=1311993425&s=170667a&w=0&h=vFvrS09vrSeKH_u2XZVmjuKeFiIEjTkwr9KQdyOfqvg=" alt="...">
-                <div class="card-body">
-                  <small >Category:Pets</small>
-                </div>
-                <a class="btn btn-outline-dark btn-sm m-1" href="{% url 'photo' %}">View</a>
-              </div>
-        </div>
-        <!--  -->
-        <div class="col-md-4">
-            <div class="card my-2 " >
-                <img src="https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg" class="image-thumbail" alt="...">
+                <img src="{{ photo.image.url}}" class="image-thumbail" alt="...">
                 <div class="card-body">
                   <small >Category:Pets</small>
                 </div>
                 <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
               </div>
         </div>
-        <!--  -->
-
-        <div class="col-md-4">
-            <div class="card my-2 " >
-                <img src="https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg" class="image-thumbail" alt="...">
-                <div class="card-body">
-                  <small >Category:Pets</small>
-                </div>
-                <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
-              </div>
-        </div>
-        <!--  -->
-        <div class="col-md-4">
-            <div class="card my-2 " >
-                <img src="https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg" class="image-thumbail" alt="...">
-                <div class="card-body">
-                  <small >Category:Pets</small>
-                </div>
-                <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
-              </div>
-        </div>
-        <!--  -->
-        <div class="col-md-4">
-            <div class="card my-2 " >
-                <img src="https://www.rd.com/wp-content/uploads/2021/04/GettyImages-988013222-scaled-e1618857975729.jpg" class="image-thumbail" alt="...">
-                <div class="card-body">
-                  <small >Category:Pets</small>
-                </div>
-                <a class="btn btn-outline-dark btn-sm m-1" href="">View</a>
-              </div>
-        </div>
+        {% empty %}
+        <h3>No Photos... </h3>
+        {% endfor %}
     </div>
 </div>
 </div>
