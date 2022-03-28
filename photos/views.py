@@ -118,3 +118,16 @@ def addPhoto(request):
 
     context = {'categories': categories}
     return render(request, 'all-photos/add.html', context)
+
+def search_results(request):
+
+    if 'photo' in request.GET and request.GET["photo"]:
+        category = request.GET.get("photo")
+        searched_photos = Photo.search_by_category(category)
+        message = f"{category}"
+
+        return render(request, 'all-photos/search.html',{"message":message,"photos": searched_photos})
+
+    else:
+        message = "You haven't searched for any category"
+        return render(request, 'all-photos/search.html',{"message":message})

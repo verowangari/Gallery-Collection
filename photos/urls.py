@@ -10,5 +10,6 @@ urlpatterns=[
     path('photo/<str:pk>/', views.viewPhoto, name='photo'),
     path('add/', views.addPhoto, name='add'),
     # <str:pk>/
+    path(r'^search/', views.search_results, name='search_results')
     
 ]
