@@ -1,5 +1,6 @@
 from re import T
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Editor(models.Model):
@@ -28,7 +29,8 @@ class Location(models.Model):
 class Photo(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True)
-    image=models.ImageField(null=False,blank=False)
+    # image=models.ImageField(null=False,blank=False)
+    image = CloudinaryField('image')
     description=models.TextField(max_length=500, null=False,blank=False)
     location=models.ForeignKey(Location,on_delete=models.SET_NULL,null=True,blank=True)
     
