@@ -31,7 +31,7 @@ The application requires the following installations to operate:
 ## Project Setup Instructions
 1) Git clone the repository 
 ```
-https://github.com/verowangari/pitch-post.git
+https://github.com/verowangari/Gallery-Collection.git
 ```
 2. cd into  Gallery
 ```
