@@ -43,8 +43,19 @@ def past_days_photos(request, past_date):
     return render(request, 'all-photos/past-photos.html', {"date": date})
 
 def gallery(request):
+    # user = request.user
+    category = request.GET.get('category')
+    
+    
+    if category == None:
+        photos = Photo.objects.all()
+    else:
+        photos = Photo.objects.filter(
+            category__name=category)
+    
+  
     categories=Category.objects.all()
-    photos=Photo.objects.all()
+    # photos=Photo.objects.all()
     context = {'categories': categories, 'photos': photos}
     return render(request,'all-photos/gallery.html', context)
 
