@@ -48,7 +48,7 @@
         </li>
         {% for location in locations %}
         <li class=" list-group-item">
-            <a href="{% url 'gallery' %}?category={{category.name}}">
+            <a href="{% url 'gallery' %}?location={{location.name}}">
                 {{location.name}}
             </a>
         </li>
@@ -67,6 +67,7 @@
                 <img src="{{ photo.image.url}}" class="image-thumbail" alt="...">
                 <div class="card-body">
                   <small >Category:{{photo.category.name}}</small>
+                  <small >Location:{{photo.location.name}}</small>
                 </div>
                 <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
               </div>
