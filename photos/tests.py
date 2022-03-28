@@ -8,7 +8,7 @@ class ImageTestClass(TestCase):
         self.cat = Category(name="Fashion")
         # self.cat.save_category()
         
-        self.photo = Photo(title='image test', caption='my test',  category=self.cat)
+        self.photo = Photo(description='image test', category=self.cat)
         self.photo.save_photo()
         
     def test_instance(self):
@@ -27,3 +27,23 @@ class ImageTestClass(TestCase):
     def test_search_by_category(self):
         photos = Photo.search_by_category('fashion')
         self.assertTrue(len(photos)>0)
+        
+class CategoryTestClass(TestCase):
+    # Set up Method
+    def setUp(self):
+        self.cat = Category(name="fashion")
+        self.cat.save_category()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.cat, Category))
+
+    def test_save_method(self):
+        self.cat.save_category()
+        category = Category.objects.all()
+        self.assertTrue(len(category) > 0)
+
+    def test_delete_method(self):
+        self.cat.save_category()
+        self.cat.delete_category()
+        category = Category.objects.all()
+        self.assertTrue(len(category) == 0)

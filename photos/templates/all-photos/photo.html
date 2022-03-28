@@ -15,11 +15,29 @@
     <a href="{% url 'gallery' %}" class="btn btn-dark my-3">Back</a>
 <div style="height: 90vh;">
 <img style="max-width:100% ; max-height:100%;" src="{{photo.image.url}}" alt="">
-<p>{{ photo.description}}</p>
+<p> {{ photo.description}}</p>
 </div>
-
 </div>
         </div>
+        <div class="input-group-append">
+            <button class="btn btn-brown" type="button"value="{{ photo.url }}" onclick="copyToClipboard(this.value)">Copy Image URL To Clipboard</button>
+        </div>
     </div>
+    <script>
+
+        function copyToClipboard(value){
+            function handler(event){
+                event.clipboardData.setData('text/plain',value);
+                event.preventDefault();
+                document.removeEventListener('copy',handler, true);
+            }
+                document.addEventListener('copy', handler, true);
+                document.execCommand('copy');
+        
+            swal("URL Successfully Copied!", value, "success", {
+                button: "Done",
+            });
+        }
+    </script>
 </body>
 </html>

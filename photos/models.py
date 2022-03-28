@@ -1,3 +1,4 @@
+from re import T
 from django.db import models
 
 # Create your models here.
@@ -17,13 +18,29 @@ class Category (models.Model):
     def __str__(self):
         return self.name
     
-
+class Location(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Name', null=False)
+    
+    
+    def __str__(self):
+        return self.name
 
 class Photo(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True)
     image=models.ImageField(null=False,blank=False)
     description=models.TextField(max_length=500, null=False,blank=False)
+    location=models.ForeignKey(Location,on_delete=models.SET_NULL,null=True,blank=True)
+    
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    def update_category(self, update):
+        self.name = update
+        self.save()
     
     @classmethod
     def search_by_category(cls,category):
@@ -33,9 +50,3 @@ class Photo(models.Model):
     def __str__(self):
         return self.description
     
-class Location(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Name', null=False)
-    
-    
-    def __str__(self):
-        return self.name

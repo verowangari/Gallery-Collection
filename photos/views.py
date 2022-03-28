@@ -2,7 +2,7 @@ from unicodedata import name
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
-from .models import Category,Photo
+from .models import Category,Photo,Location
 
 # Create your views here.
 def welcome(request):
@@ -55,8 +55,9 @@ def gallery(request):
     
   
     categories=Category.objects.all()
+    locations=Location.objects.all()
     # photos=Photo.objects.all()
-    context = {'categories': categories, 'photos': photos}
+    context = {'categories': categories, 'photos': photos ,'locations':locations}
     return render(request,'all-photos/gallery.html', context)
 
 def viewPhoto(request,pk):
