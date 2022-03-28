@@ -43,9 +43,9 @@
       <div class="card" > 
       <div class="card-header"> Locations</div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">
+        <!-- <li class="list-group-item">
             <a href="{% url 'gallery' %}">All</a>
-        </li>
+        </li> -->
         {% for location in locations %}
         <li class=" list-group-item">
             <a href="{% url 'gallery' %}?location={{location.name}}">

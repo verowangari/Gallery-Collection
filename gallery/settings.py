@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'photos.apps.PhotosConfig',
     # 'photos',
     'bootstrap3',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
