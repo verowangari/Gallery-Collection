@@ -23,6 +23,7 @@ whitenoise = "==6.0.0"
 Django = "==4.0.3"
 Pillow = "==9.0.1"
 setuptools = "*"
+"jaraco.text" = "*"
 
 [dev-packages]
 

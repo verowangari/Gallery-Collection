@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "785704a02c145a53827eba71d4d699ec4ce203e521c7853297cb0b7d96bf0ca2"
+            "sha256": "a98826cf053cfcb643366c3a7fc6c87bc9b3b93dcb6ee9130ff3461f59ebb0e1"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -108,6 +108,46 @@
             ],
             "index": "pypi",
             "version": "==20.1.0"
+        },
+        "importlib-resources": {
+            "hashes": [
+                "sha256:1b93238cbf23b4cde34240dd8321d99e9bf2eb4bc91c0c99b2886283e7baad85",
+                "sha256:a9dd72f6cc106aeb50f6e66b86b69b454766dd6e39b69ac68450253058706bcc"
+            ],
+            "markers": "python_version < '3.9'",
+            "version": "==5.6.0"
+        },
+        "jaraco.context": {
+            "hashes": [
+                "sha256:17b909da2fb37ad237ca7ff9523977f8665a47a25b90aec6a99a3e0959c86141",
+                "sha256:f0d4d82ffbbbff680384eba48a32a3167f12a91a30a7db56fd97b87e73a87241"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==4.1.1"
+        },
+        "jaraco.functools": {
+            "hashes": [
+                "sha256:141f95c490a18eb8aab86caf7a2728f02f604988a26dc36652e3d9fa9e4c49fa",
+                "sha256:31e0e93d1027592b7b0bec6ad468db850338981ebee76ba5e212e235f4c7dda0"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==3.5.0"
+        },
+        "jaraco.text": {
+            "hashes": [
+                "sha256:17b43aa0bd46e97c368ccd8a4c8fef2719ca121b6d39ce4be9d9e0143832479a",
+                "sha256:a7f9cc1b44a5f3096a216cbd130b650c7a6b2c9f8005b000ae97f329239a7c00"
+            ],
+            "index": "pypi",
+            "version": "==3.7.0"
+        },
+        "more-itertools": {
+            "hashes": [
+                "sha256:43e6dd9942dffd72661a2c4ef383ad7da1e6a3e968a927ad7a6083ab410a688b",
+                "sha256:7dc6ad46f05f545f900dd59e8dfb4e84a4827b97b3cfecb175ea0c7d247f6064"
+            ],
+            "markers": "python_version >= '3.5'",
+            "version": "==8.12.0"
         },
         "pillow": {
             "hashes": [
@@ -222,6 +262,14 @@
             ],
             "index": "pypi",
             "version": "==6.0.0"
+        },
+        "zipp": {
+            "hashes": [
+                "sha256:9f50f446828eb9d45b267433fd3e9da8d801f614129124863f9c51ebceafb87d",
+                "sha256:b47250dd24f92b7dd6a0a8fc5244da14608f3ca90a5efcd37a3b1642fac9a375"
+            ],
+            "markers": "python_version < '3.10'",
+            "version": "==3.7.0"
         }
     },
     "develop": {}
