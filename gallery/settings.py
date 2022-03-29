@@ -15,6 +15,9 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import django_heroku
+import dj_database_url
+from decouple import config,Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'gallery.urls'
@@ -81,14 +85,14 @@ WSGI_APPLICATION = 'gallery.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'gallery',
-        'USER':'moringa',
-        'PASSWORD':'Access',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'gallery',
+#         'USER':'moringa',
+#         'PASSWORD':'Access',
+#     }
+# }
 
 
 # Password validation
@@ -126,19 +130,50 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'static'),
-    BASE_DIR/'static'
-]
+# Working path in development
+# STATICFILES_DIRS = [
+#     # os.path.join(BASE_DIR, 'static'),
+    
+#     BASE_DIR/'static'
+# ]
+
+
+# path from deployment
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+# working in development
 MEDIA_URL='/images/'
 MEDIA_ROOT =BASE_DIR/'static/images'
-STATIC_ROOT =BASE_DIR / 'staticfiles'
+# 
+
+
+# working in production
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# configuring the location for media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
+
+
+
+# working root for development
+# STATIC_ROOT =BASE_DIR / 'staticfiles'
+
+# deploy root
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # adding config
@@ -147,3 +182,32 @@ cloudinary.config(
   api_key = '934679428694675', 
   api_secret = 'KPYcLgUjm71mz8lOmYb3LlXV7xs' 
 )
+
+
+# configurations for deployment
+MODE=config("MODE", default="dev")
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+# development
+if config('MODE')=="dev":
+   DATABASES = {
+       'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'gallery',
+        'USER':'moringa',
+        'PASSWORD':'Access',
+    }
+       
+   }
+# production
+else:
+   DATABASES = {
+       'default': dj_database_url.config(
+           default=config('DATABASE_URL')
+       )
+   }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
