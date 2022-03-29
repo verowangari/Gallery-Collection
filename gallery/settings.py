@@ -32,9 +32,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # configurations for deployment
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 
 ALLOWED_HOSTS = '*'
